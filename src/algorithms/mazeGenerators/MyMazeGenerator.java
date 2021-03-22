@@ -9,8 +9,8 @@ public class MyMazeGenerator extends AMazeGenerator {
         Maze maze =  new Maze(column,rows);
         final LinkedList<int[]> frontiers = new LinkedList<>();
         final Random random = new Random();
-        int x = random.nextInt(column);
-        int y = random.nextInt(rows);
+        int x = 1;
+        int y = 1;
         frontiers.add(new int[]{x, y, x, y});
 
         while (!frontiers.isEmpty()) {

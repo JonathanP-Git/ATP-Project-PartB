@@ -20,8 +20,8 @@ public class Maze {
 //        }
 //        return sb.toString();}
     public String toString(){
-        final char PASSAGE_CHAR = ' ';
-        final char WALL_CHAR = '▓';
+        final char PASSAGE_CHAR = 'X';
+        final char WALL_CHAR = '*';
         final StringBuffer b = new StringBuffer();
         for ( int x = 0; x < column + 2; x++ )
             b.append( WALL_CHAR );
