@@ -6,6 +6,8 @@ public class Maze {
     int [][] maze;
     int rows;
     int column;
+    Position end_position;
+
 
 
 //    public String toString(){
@@ -49,6 +51,7 @@ public class Maze {
     public Maze(int rows, int column) {
         this.rows = rows;
         this.column = column;
+        this.end_position = new Position(0,0);
         maze = new int[rows][column];
         int i,j;
         for  (i=0;i<this.column;i++){
@@ -67,6 +70,6 @@ public class Maze {
     }
 
     public Object getGoalPosition() {
-        return new Position(rows - 1, column - 2);
+        return end_position;
     }
 }
