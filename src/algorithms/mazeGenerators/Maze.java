@@ -23,15 +23,18 @@ public class Maze {
 =======
         final char PASSAGE_CHAR = '*';
         final char WALL_CHAR = 'X';
+<<<<<<< HEAD
         final char SemiWall = '*';
 >>>>>>> 7cf5498ce53162c0cb1e9cfc2b46b3f3ef2e99ff
+=======
+>>>>>>> origin
         final StringBuffer b = new StringBuffer();
 //        for ( int x = 0; x < column + 2; x++ )
 //            b.append( WALL_CHAR );
 //        b.append( '\n' );
-        for ( int y = 0; y < rows; y++ ){
+        for ( int x = 0; x < rows; x++ ){
 //            b.append( WALL_CHAR );
-            for ( int x = 0; x < column; x++ )
+            for ( int y = 0; y < column; y++ )
                 b.append( maze[x][y] == 1 ? WALL_CHAR : PASSAGE_CHAR );
 //            b.append( WALL_CHAR );
             b.append( '\n' );
@@ -43,14 +46,14 @@ public class Maze {
     }
 
 
-    public Maze(int column, int rows) {
+    public Maze(int rows, int column) {
         this.rows = rows;
         this.column = column;
-        maze = new int[column][rows];
+        maze = new int[rows][column];
         int i,j;
         for  (i=0;i<this.column;i++){
             for (j=0;j<this.rows;j++){
-                maze[i][j]=1;
+                maze[j][i]=1;
             }
 }
     }
