@@ -13,15 +13,10 @@ public class MyMazeGenerator extends AMazeGenerator {
         maze.maze[NewColumn-1][NewRows-1] = 0;
         final LinkedList<int[]> frontiers = new LinkedList<>();
         final Random random = new Random();
-<<<<<<< HEAD
-        int x = 1;
-        int y = 1;
-=======
-//        int x = random.nextInt(column);
-//        int y = random.nextInt(rows);
+
         int x = 1; //column
         int y = 0; //rows
->>>>>>> 7cf5498ce53162c0cb1e9cfc2b46b3f3ef2e99ff
+
         frontiers.add(new int[]{x, y, x, y});
 
         while (!frontiers.isEmpty()) {
