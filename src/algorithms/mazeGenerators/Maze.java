@@ -79,7 +79,7 @@ public class Maze {
         return new Position(0,1);
     }
 
-    public Object getGoalPosition() {
+    public Position getGoalPosition() {
         return end_position;
     }
 }
