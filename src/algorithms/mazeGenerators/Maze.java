@@ -4,16 +4,17 @@ import java.util.Arrays;
 
 public class Maze {
     int [][] maze;
-    int rows;
-    int column;
+    int rows_mazeSize;
+    int column_mazeSize;
     Position end_position;
+    Position start_position;
 
     public int getRows() {
-        return rows;
+        return rows_mazeSize;
     }
 
     public int getColumn() {
-        return column;
+        return column_mazeSize;
     }
 
     public int[][] getMaze() {
@@ -37,9 +38,9 @@ public class Maze {
 //        for ( int x = 0; x < column + 2; x++ )
 //            b.append( WALL_CHAR );
 //        b.append( '\n' );
-        for ( int x = 0; x < rows; x++ ){
+        for ( int x = 0; x < rows_mazeSize; x++ ){
 //            b.append( WALL_CHAR );
-            for ( int y = 0; y < column; y++ )
+            for ( int y = 0; y < column_mazeSize; y++ )
                 b.append( maze[x][y] == 1 ? WALL_CHAR : PASSAGE_CHAR );
 //            b.append( WALL_CHAR );
             b.append( '\n' );
@@ -52,13 +53,13 @@ public class Maze {
 
 
     public Maze(int rows, int column) {
-        this.rows = rows;
-        this.column = column;
+        this.rows_mazeSize = rows;
+        this.column_mazeSize = column;
         this.end_position = new Position(0,0);
         maze = new int[rows][column];
         int i,j;
-        for  (i=0;i<this.column;i++){
-            for (j=0;j<this.rows;j++){
+        for  (i=0;i<this.column_mazeSize;i++){
+            for (j=0;j<this.rows_mazeSize;j++){
                 maze[j][i]=1;
             }
 }

@@ -4,13 +4,12 @@ import algorithms.mazeGenerators.Position;
 
 public class MazeState extends AState{
     private final Position current_position;
-    private MazeState parent;
+
 
     public MazeState(int row, int column){
-        super(row,column);
+        super();
         this.current_position = new Position(row,column);
-        MazeState parent = null;
-        //????//
+
     }
 
     @Override
@@ -20,11 +19,7 @@ public class MazeState extends AState{
     }
 
 
-    @Override
 
-    public MazeState getParent() {
-        return parent;
-    }
 
     @Override
     public void setParentNull() {

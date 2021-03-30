@@ -2,51 +2,42 @@ package algorithms.search;
 
 import java.util.*;
 
-public class BreadthFirstSearch extends ASearchingAlgorithm {
+public class BreadthFirstSearch extends ASearchingAlgorithm{
+
+    int numOfNodesEvaluated;
+
     @Override
     public String getName() {
-        return null;
+        return "Breadth First Search";
     }
 
     @Override
     public int getNumberOfNodesEvaluated() {
-        return 0;
+        return this.numOfNodesEvaluated;
     }
 
     @Override
     public Solution solve(ISearchable specificPuzzle) {
         AState startState = specificPuzzle.getStart();
         Queue<AState> queue = new LinkedList<>();
-        HashMap<AState,AState> visited = new HashMap<>();
+        HashSet<AState> visited = new HashSet<>();
         queue.add(startState);
-        AState current = startState;
-        while (current != specificPuzzle.getEnd()) {
-            List<AState> adj = specificPuzzle.getAllPossibleStates(current);
-            for (AState n : adj) {
-
-                if (!visited.containsKey(n)) {
-                    visited.put(n,current);
-                    queue.add(n);
-
-                }
+        while(!queue.isEmpty()){
+            if ((queue.peek().equals(specificPuzzle.getEnd().getRow(),specificPuzzle.getEnd().getColumn()))){break;}
+            AState tmp = queue.poll();
+            if(!visited.contains(tmp)){
+                visited.add(tmp);
+                List<AState> possibleStates = specificPuzzle.getAllPossibleStates(tmp);
+                for(AState adjacent: possibleStates){
+                    adjacent.setParent(tmp);
+                    queue.add(adjacent);}
             }
-            current = queue.remove();
         }
-        LinkedList<AState>path= new LinkedList<>() ;
-        path.add(1,current);
-        while(current!=startState){
-            current=visited.get(current);
-            path.add(1,current);
+        if (queue.peek() != null && queue.peek().equals(specificPuzzle.getEnd().getRow(),specificPuzzle.getEnd().getColumn())){
+            return getSolution(queue.poll());
         }
-
-
-
-        return getSolution(current);
-
-
+        return null;
     }
-
-
     private Solution getSolution(AState tmp) {
         Solution solution = new Solution();
         solution.add(tmp);

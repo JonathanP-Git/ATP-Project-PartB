@@ -3,24 +3,11 @@ package algorithms.search;
 import java.util.Objects;
 
 public abstract class AState {
-    int row;
-    int column;
+
+    AState parent;
+    int cost;
 
 
-    public AState(int row, int column) {
-        this.row = row;
-        this.column = column;
-    }
-//    Position position;
-
-
-    @Override
-    public String toString() {
-        return "AState{" +
-                "row=" + row +
-                ", column=" + column +
-                '}';
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -55,7 +42,4 @@ public abstract class AState {
     public abstract AState getParent();
     public abstract void setParentNull();
 
-//    public Position getPosition() {
-//        return position;
-//    }
 }
