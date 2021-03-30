@@ -12,6 +12,13 @@ public abstract class AState {
     public AState() {
         this.cost = 0;
     }
+
+    public AState(AState parent,int cost) {
+        this.cost = cost;
+        this.parent=parent;
+
+    }
+
     public abstract void setParent(AState parent);
     public abstract AState getParent();
     public abstract void setParentNull();

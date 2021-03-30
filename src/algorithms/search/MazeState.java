@@ -7,31 +7,28 @@ import java.util.Objects;
 public class MazeState extends AState{
     private final Position current_position;
 
-<<<<<<< HEAD
-=======
     public int getRow() {
         return current_position.getRowIndex();
     }
+
     public int getColumn() {
         return current_position.getColumnIndex();
     }
+
     public MazeState(int row, int column, int cost){
         super();
         this.current_position = new Position(row,column);
         this.cost = cost;
     }
-<<<<<<< HEAD
->>>>>>> 35121aaf01746b6771859394f06a6fcfc93ac4b4
+    public MazeState(int row, int column, AState parent){
+        super();
+        this.current_position = new Position(row,column);
+        this.setParent(parent);
+    }
 
-=======
->>>>>>> origin
     public MazeState(int row, int column){
         super();
         this.current_position = new Position(row,column);
-<<<<<<< HEAD
-
-=======
->>>>>>> 35121aaf01746b6771859394f06a6fcfc93ac4b4
     }
     @Override
     public boolean equals(Object o) {
@@ -53,22 +50,10 @@ public class MazeState extends AState{
     @Override
     public void setParent(AState father) {
         this.parent = father;}
-<<<<<<< HEAD
-
-
-<<<<<<< HEAD
-=======
-    public AState getParent() {
-        return parent;
-    }
->>>>>>> 35121aaf01746b6771859394f06a6fcfc93ac4b4
-
-=======
     @Override
     public AState getParent() {
         return parent;
     }
->>>>>>> origin
     @Override
     public void setParentNull() {
         this.parent = null;
