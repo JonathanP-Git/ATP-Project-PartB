@@ -29,17 +29,10 @@ public class Maze {
 //        }
 //        return sb.toString();}
     public String toString(){
-<<<<<<< HEAD
-        final char PASSAGE_CHAR = 'X';
-        final char WALL_CHAR = '*';
-=======
+
         final char PASSAGE_CHAR = '*';
         final char WALL_CHAR = 'X';
-<<<<<<< HEAD
-        final char SemiWall = '*';
->>>>>>> 7cf5498ce53162c0cb1e9cfc2b46b3f3ef2e99ff
-=======
->>>>>>> origin
+
         final StringBuffer b = new StringBuffer();
 //        for ( int x = 0; x < column + 2; x++ )
 //            b.append( WALL_CHAR );

@@ -2,7 +2,7 @@ package algorithms.search;
 
 import java.util.*;
 
-public class BreadthFirstSearch extends ASearchingAlgorithm{
+public class BreadthFirstSearch extends ASearchingAlgorithm {
     @Override
     public String getName() {
         return null;
@@ -15,29 +15,38 @@ public class BreadthFirstSearch extends ASearchingAlgorithm{
 
     @Override
     public Solution solve(ISearchable specificPuzzle) {
-            AState startState = specificPuzzle.getStart();
-            Queue<AState> stack = new LinkedList<>();
-            HashSet<AState> visited = new HashSet<>();
-            stack.push(startState);
-            while(!stack.isEmpty() || (!(stack.peek().equals(specificPuzzle.getEnd().getRow(),specificPuzzle.getEnd().getColumn())))){
-                AState tmp = stack.pop();
-                if(!visited.contains(tmp)){
-                    visited.add(tmp);
-                    List<AState> possibleStates = specificPuzzle.getAllPossibleStates(tmp);
-                    if (possibleStates.size() == 0){
-                        tmp.setParentNull();
-                        continue;}
-                    for(AState n : possibleStates){
-                        n.setParent(tmp);
-                        stack.push(n);}
+        AState startState = specificPuzzle.getStart();
+        Queue<AState> queue = new LinkedList<>();
+        HashMap<AState,AState> visited = new HashMap<>();
+        queue.add(startState);
+        AState current = startState;
+        while (current != specificPuzzle.getEnd()) {
+            List<AState> adj = specificPuzzle.getAllPossibleStates(current);
+            for (AState n : adj) {
+
+                if (!visited.containsKey(n)) {
+                    visited.put(n,current);
+                    queue.add(n);
+
                 }
             }
-            if (stack.peek().equals(specificPuzzle.getEnd().getRow(),specificPuzzle.getEnd().getColumn())){
-                return getSolution(stack.pop());
-            }
-            return null;
+            current = queue.remove();
         }
+        LinkedList<AState>path= new LinkedList<>() ;
+        path.add(1,current);
+        while(current!=startState){
+            current=visited.get(current);
+            path.add(1,current);
+        }
+
+
+
+        return getSolution(current);
+
+
     }
+
+
     private Solution getSolution(AState tmp) {
         Solution solution = new Solution();
         solution.add(tmp);
