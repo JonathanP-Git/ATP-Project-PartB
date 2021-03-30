@@ -12,13 +12,8 @@ public class RunSearchOnMaze {
         maze.print();
         SearchableMaze searchableMaze = new SearchableMaze(maze);
         solveProblem(searchableMaze, new BreadthFirstSearch());
-<<<<<<< HEAD
- //       solveProblem(searchableMaze, new DepthFirstSearch());
-//        solveProblem(searchableMaze, new BestFirstSearch());
-=======
 //        solveProblem(searchableMaze, new DepthFirstSearch());
         solveProblem(searchableMaze, new BestFirstSearch());
->>>>>>> 35121aaf01746b6771859394f06a6fcfc93ac4b4
     }
     private static void solveProblem(ISearchable domain, ISearchingAlgorithm
             searcher) {
@@ -26,7 +21,7 @@ public class RunSearchOnMaze {
         Solution solution = searcher.solve(domain);
         System.out.println(String.format("'%s' algorithm - nodes evaluated: %s", searcher.getName(), searcher.getNumberOfNodesEvaluated()));
         //Printing Solution Path
-                System.out.println("Solution path:");
+        System.out.println("Solution path:");
         ArrayList<AState> solutionPath = solution.getSolutionPath();
         for (int i = 0; i < solutionPath.size(); i++) {
             System.out.println(String.format("%s. %s",i,solutionPath.get(i)));
