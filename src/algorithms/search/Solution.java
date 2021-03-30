@@ -5,11 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 
 public class Solution {
-    ArrayList<AState> path;
-
-    public ArrayList<AState> getPath() {
-        return path;
-    }
+    private ArrayList<AState> path;
 
     public Solution() {
         this.path = new ArrayList<AState>();
@@ -17,7 +13,6 @@ public class Solution {
     public boolean contains(AState temp){
         return path.contains(temp);
     }
-
     public void add(AState tmp) {
         path.add(tmp);
     }
@@ -27,5 +22,9 @@ public class Solution {
         return "Solution{" +
                 "path=" + path +
                 '}';
+    }
+
+    public ArrayList<AState> getSolutionPath() {
+        return path;
     }
 }

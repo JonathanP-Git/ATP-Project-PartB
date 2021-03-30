@@ -8,12 +8,17 @@ import java.util.ArrayList;
 public class RunSearchOnMaze {
     public static void main(String[] args) {
         IMazeGenerator mg = new MyMazeGenerator();
-        Maze maze = mg.generate(15, 15);
+        Maze maze = mg.generate(10, 10);
         maze.print();
         SearchableMaze searchableMaze = new SearchableMaze(maze);
         solveProblem(searchableMaze, new BreadthFirstSearch());
+<<<<<<< HEAD
  //       solveProblem(searchableMaze, new DepthFirstSearch());
 //        solveProblem(searchableMaze, new BestFirstSearch());
+=======
+//        solveProblem(searchableMaze, new DepthFirstSearch());
+        solveProblem(searchableMaze, new BestFirstSearch());
+>>>>>>> 35121aaf01746b6771859394f06a6fcfc93ac4b4
     }
     private static void solveProblem(ISearchable domain, ISearchingAlgorithm
             searcher) {
@@ -22,11 +27,9 @@ public class RunSearchOnMaze {
         System.out.println(String.format("'%s' algorithm - nodes evaluated: %s", searcher.getName(), searcher.getNumberOfNodesEvaluated()));
 //Printing Solution Path
                 System.out.println("Solution path:");
-            System.out.println(solution);
-//        ArrayList<AState> solutionPath = solution.getSolutionPath();
-//        for (int i = 0; i < solutionPath.size(); i++) {
-//            System.out.println(String.format("%s.
-//                    %s",i,solutionPath.get(i)));
-//        }
+        ArrayList<AState> solutionPath = solution.getSolutionPath();
+        for (int i = 0; i < solutionPath.size(); i++) {
+            System.out.println(String.format("%s. %s",i,solutionPath.get(i)));
+        }
     }
 }
