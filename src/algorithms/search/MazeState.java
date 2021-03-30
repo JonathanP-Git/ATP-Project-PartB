@@ -12,18 +12,19 @@ public class MazeState extends AState{
     public int getRow() {
         return current_position.getRowIndex();
     }
-
     public int getColumn() {
         return current_position.getColumnIndex();
     }
-
     public MazeState(int row, int column, int cost){
         super();
         this.current_position = new Position(row,column);
         this.cost = cost;
     }
+<<<<<<< HEAD
 >>>>>>> 35121aaf01746b6771859394f06a6fcfc93ac4b4
 
+=======
+>>>>>>> origin
     public MazeState(int row, int column){
         super();
         this.current_position = new Position(row,column);
@@ -32,7 +33,6 @@ public class MazeState extends AState{
 =======
 >>>>>>> 35121aaf01746b6771859394f06a6fcfc93ac4b4
     }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -40,22 +40,20 @@ public class MazeState extends AState{
         MazeState mazeState = (MazeState) o;
         return Objects.equals(current_position, mazeState.current_position);
     }
-
     @Override
     public String toString() {
         return "MazeState{" +
                 current_position +
                 '}';
     }
-
     @Override
     public int hashCode() {
         return Objects.hash(current_position);
     }
-
     @Override
     public void setParent(AState father) {
         this.parent = father;}
+<<<<<<< HEAD
 
 
 <<<<<<< HEAD
@@ -65,6 +63,12 @@ public class MazeState extends AState{
     }
 >>>>>>> 35121aaf01746b6771859394f06a6fcfc93ac4b4
 
+=======
+    @Override
+    public AState getParent() {
+        return parent;
+    }
+>>>>>>> origin
     @Override
     public void setParentNull() {
         this.parent = null;

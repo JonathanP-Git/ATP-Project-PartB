@@ -63,13 +63,11 @@ public abstract class AState {
     public int getCost() {
         return cost;
     }
-
     public AState() {
-//        this.row = row;
-//        this.column = column;
         this.cost = 0;
 >>>>>>> 35121aaf01746b6771859394f06a6fcfc93ac4b4
     }
+<<<<<<< HEAD
 //    Position position;
 
 <<<<<<< HEAD
@@ -116,11 +114,10 @@ public abstract class AState {
 //    }
 >>>>>>> 35121aaf01746b6771859394f06a6fcfc93ac4b4
 
+=======
+>>>>>>> origin
     public abstract void setParent(AState parent);
     public abstract AState getParent();
     public abstract void setParentNull();
 
-//    public Position getPosition() {
-//        return position;
-//    }
 }
