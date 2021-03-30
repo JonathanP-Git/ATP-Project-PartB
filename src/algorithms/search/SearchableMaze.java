@@ -80,6 +80,7 @@ public class SearchableMaze implements ISearchable {
         return Possible_states;
     }
 
+    //should add here more field of cost
     public boolean Diagonal_Verification(String str,AState curr_state_maze,AState next_curr_state){return switch (str) {
         case "goUpRight" -> Non_Diagonal_Verification("goUp",curr_state_maze) && Non_Diagonal_Verification("goRight",next_curr_state);
         case "goUpLeft" -> Non_Diagonal_Verification("goUp",curr_state_maze) && Non_Diagonal_Verification("goLeft",next_curr_state);
