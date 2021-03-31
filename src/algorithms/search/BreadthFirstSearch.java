@@ -20,27 +20,7 @@ public class BreadthFirstSearch extends ASearchingAlgorithm{
 
     @Override
     public Solution solve(ISearchable specificPuzzle) { //Wrapper function
-<<<<<<< HEAD
-        Queue<AState> queue = new LinkedList<>();
-        return solve(specificPuzzle, queue, "BFS");}
 
-    public Solution solve(ISearchable specificPuzzle,Queue<AState> queue, String searchingAlgorithm) {
-        AState startState = specificPuzzle.getStart();
-        HashSet<AState> visited = new HashSet<>();
-        queue.add(startState);
-        while(!queue.isEmpty()){
-            if ((queue.peek().equals(specificPuzzle.getEnd()))){break;}
-            AState tmp = queue.poll();
-            if(!visited.contains(tmp)){
-                visited.add(tmp);
-                List<AState> possibleStates = specificPuzzle.getAllPossibleStates(tmp,searchingAlgorithm);
-                if (possibleStates.size() == 0){
-                    tmp.setParentNull();
-                    continue;}
-                for(AState adjacent: possibleStates){
-                    adjacent.setParent(tmp);
-                    queue.add(adjacent);}
-=======
             Queue<AState> queue = new LinkedList<>();
             return solve(specificPuzzle, queue);}
 
@@ -65,8 +45,7 @@ public class BreadthFirstSearch extends ASearchingAlgorithm{
                         adjacent.setParent(tmp);
                         adjacent.setSumCost(sumCost + adjacent.getCost());
                         queue.add(adjacent);}
-                }
->>>>>>> e54f3e6076f8c6f4d497a3a7cdc27e4b7f3ef7d2
+
             }
         }
         if (queue.peek() != null && queue.peek().equals(specificPuzzle.getEnd())){
