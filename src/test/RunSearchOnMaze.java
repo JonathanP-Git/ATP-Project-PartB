@@ -20,12 +20,17 @@ public class RunSearchOnMaze {
         Solution solution = searcher.solve(domain);
         System.out.println(String.format("'%s' algorithm - nodes evaluated: %s", searcher.getName(), searcher.getNumberOfNodesEvaluated()));
         //Printing Solution Path
+<<<<<<< HEAD
         System.out.println("Solution path:");
         if (solution.getSolutionPath()==null){
             System.out.println("there is no solution to the maze-->we should fix this");
 
         }
         else{
+=======
+                System.out.println("Solution path:");
+        if (solution.getSolutionPath()==null){ System.out.println("there is no solution to the maze-->we should fix this"); }
+>>>>>>> e54f3e6076f8c6f4d497a3a7cdc27e4b7f3ef7d2
         ArrayList<AState> solutionPath = solution.getSolutionPath();
         for (int i = 0; i < solutionPath.size(); i++) {
             System.out.println(String.format("%s. %s",i,solutionPath.get(i)));

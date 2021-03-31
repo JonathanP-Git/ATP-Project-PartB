@@ -1,5 +1,5 @@
 package algorithms.search;
-
+import java.util.Comparator;
 import algorithms.mazeGenerators.Position;
 
 import java.util.Objects;
@@ -58,5 +58,6 @@ public class MazeState extends AState{
     public void setParentNull() {
         this.parent = null;
     }
+
 
 }
