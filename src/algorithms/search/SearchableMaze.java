@@ -4,28 +4,40 @@ import algorithms.mazeGenerators.Position;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.LinkedList;
 import java.util.List;
 
 public class SearchableMaze implements ISearchable {
     private Maze maze;
-    String searchingAlgorithm;
 
+    /**
+     * constructor- initialized maze field
+     * @param maze
+     */
     public SearchableMaze(Maze maze){
         this.maze = maze;
     }
 
+    @Override
+    /**
+     * @return the maze start position
+     */
     public AState getStart(){
+        if (this.maze==null) return null;
         Position startPosition = maze.getStartPosition();
         return (new MazeState(startPosition.getRowIndex(),startPosition.getColumnIndex()));
     }
 
     @Override
+    /**
+     * @return the maze enf position
+     */
     public AState getEnd() {
-        Position endPosition = maze.getEndPosition();
+        if (this.maze.getGoalPosition()==null) return null;
+        Position endPosition = maze.getGoalPosition();
         return (new MazeState(endPosition.getRowIndex(),endPosition.getColumnIndex()));
     }
 
+<<<<<<< HEAD
 
     public List<AState> getAllPossibleStates(AState curr_state,String searchingAlgorithm){
         this.searchingAlgorithm = searchingAlgorithm;
@@ -45,6 +57,15 @@ public class SearchableMaze implements ISearchable {
     }
 
     public List<AState> getAllPossibleStates(AState curr_state){
+=======
+    /**
+     * For each AState checks what are the optional steps for progress and according to the
+     * searching algorithm we are using- what is the cost of each step
+     * @param curr_state - current position
+     * @return list of all current optional steps
+     */
+    public List<AState> getAllSuccessors(AState curr_state){
+>>>>>>> a4eb82fb51a9682b49977a06283e8b3eeebbe87d
         if (!(curr_state instanceof MazeState)){
             return null;
         }

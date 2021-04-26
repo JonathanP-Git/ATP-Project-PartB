@@ -9,47 +9,54 @@ public class DepthFirstSearch extends ASearchingAlgorithm {
 
     int numOfNodesEvaluated;
 
-//    Stack<AState> DFS_stack;
-
     @Override
+    /**
+     * @return name of the algorithm - "DepthFirstSearch".
+     */
     public String getName() {
-        return "Depth First Search";
+        return "DepthFirstSearch";
     }
 
     @Override
+    /**
+     * @return number of nodes evaluated.
+     */
     public int getNumberOfNodesEvaluated() {
         return numOfNodesEvaluated;
     }
 
     @Override
+    /**
+     * Search algorithm, with each step advanced in depth in order to find a way to the solution.
+     * Returns an optional path to the solution
+     */
     public Solution solve(ISearchable specificPuzzle) {
-        System.out.println("DFS SCAN");
+        if (specificPuzzle==null) throw new RuntimeException("The specific puzzle recited is null");
         AState startState = specificPuzzle.getStart();
         Stack<AState> stack = new Stack<>();
         HashSet<AState> visited = new HashSet<>();
         stack.push(startState);
-        while(!stack.isEmpty()){
+        while(!stack.isEmpty()){ //While the stack isn't empty
             if ((stack.peek().equals(specificPuzzle.getEnd()))){break;}
             AState tmp = stack.pop();
             if(!visited.contains(tmp)){
-                visited.add(tmp);
-                List<AState> possibleStates = specificPuzzle.getAllPossibleStates(tmp);
+                visited.add(tmp); //add the current state to visited.
+                List<AState> possibleStates = specificPuzzle.getAllSuccessors(tmp); //Get all possible moves from the current state.
                 if (possibleStates.size() == 0){ // To avoid turning back
                     tmp.setParentNull();
                     continue;}
                 for(AState n : possibleStates){
                     n.setParent(tmp);
                     stack.push(n);}
-
             }
         }
         if (stack.peek().equals(specificPuzzle.getEnd())){
-            return getSolution(stack.pop());
+            return getSolutionDFS(stack.pop());
         }
         return null;
     }
 
-    private Solution getSolution(AState tmp) {
+    private Solution getSolutionDFS(AState tmp) {
         Solution solution = new Solution();
         solution.add(tmp);
         this.numOfNodesEvaluated++;

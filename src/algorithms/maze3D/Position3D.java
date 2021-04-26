@@ -2,6 +2,9 @@ package algorithms.maze3D;
 
 import java.util.Objects;
 
+/**
+ * Position3D class contains 3 fields - row, column, depth.
+ */
 public class Position3D {
     int row;
     int column;
@@ -9,10 +12,10 @@ public class Position3D {
 
     @Override
     public String toString() {
-        return "Position3D{" +
-                "row=" + row +
-                ", column=" + column +
-                ", depth=" + depth +
+        return "{" +
+                + depth +
+                ","+ row +
+                ","+ column +
                 '}';
     }
 
