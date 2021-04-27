@@ -28,16 +28,10 @@ public class BreadthFirstSearch extends ASearchingAlgorithm{
     }
 
     @Override
-<<<<<<< HEAD
+
     public Solution solve(ISearchable specificPuzzle) { //Wrapper function
 
-=======
-    /**
-     * Wrapper function in order to distinguish which
-     * variation of the algorithm we are interested in using
-     */
-    public Solution solve(ISearchable specificPuzzle) {
->>>>>>> a4eb82fb51a9682b49977a06283e8b3eeebbe87d
+
             Queue<AState> queue = new LinkedList<>();
             return solve(specificPuzzle, queue);}
 
@@ -72,7 +66,7 @@ public class BreadthFirstSearch extends ASearchingAlgorithm{
             }
         }
         if (queue.peek() != null && queue.peek().equals(specificPuzzle.getEnd())){
-<<<<<<< HEAD
+
             return getSolution(queue.poll());
         }
         System.out.println("ERROR!!!");
@@ -80,16 +74,7 @@ public class BreadthFirstSearch extends ASearchingAlgorithm{
     }
 
     private Solution getSolution(AState tmp) {
-=======
-                return getSolution(queue.poll());
-            }
-        return null;
-        }
-    /**
-     * return the Solution path - For the BestFS AND BFS
-     */
-    public Solution getSolution(AState tmp) {
->>>>>>> a4eb82fb51a9682b49977a06283e8b3eeebbe87d
+
         int sum = 0;
         Solution solution = new Solution();
         solution.add(tmp);

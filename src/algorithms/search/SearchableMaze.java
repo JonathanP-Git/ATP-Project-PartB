@@ -37,27 +37,6 @@ public class SearchableMaze implements ISearchable {
         return (new MazeState(endPosition.getRowIndex(),endPosition.getColumnIndex()));
     }
 
-<<<<<<< HEAD
-
-    public List<AState> getAllPossibleStates(AState curr_state,String searchingAlgorithm){
-        this.searchingAlgorithm = searchingAlgorithm;
-        return getAllPossibleStates(curr_state);
-    }
-    private boolean isValidPosition(Position position) {
-        int row = position.getRowIndex();
-        int col = position.getColumnIndex();
-        if(row<0 || row>=maze.getRows())
-            return false;
-        if(col<0 || col>=maze.getColumn())
-            return false;
-        if (maze.getMaze()[row][col] == 1)
-            return false;
-
-        return true;
-    }
-
-    public List<AState> getAllPossibleStates(AState curr_state){
-=======
     /**
      * For each AState checks what are the optional steps for progress and according to the
      * searching algorithm we are using- what is the cost of each step
@@ -65,68 +44,37 @@ public class SearchableMaze implements ISearchable {
      * @return list of all current optional steps
      */
     public List<AState> getAllSuccessors(AState curr_state){
->>>>>>> a4eb82fb51a9682b49977a06283e8b3eeebbe87d
         if (!(curr_state instanceof MazeState)){
             return null;
         }
-
         MazeState curr_state_maze = (MazeState)curr_state;
         List<AState> Possible_states = new ArrayList<>();
-
-
-        Position goUpRight = new Position(curr_state_maze.getRow() - 1, curr_state_maze.getColumn() + 1);
-        Position goUpLeft = new Position(curr_state_maze.getRow() - 1 , curr_state_maze.getColumn() -1 );
-        Position goDownRight = new Position(curr_state_maze.getRow() + 1, curr_state_maze.getColumn() + 1);
-        Position goDownLeft = new Position(curr_state_maze.getRow() + 1, curr_state_maze.getColumn() -1);
-
-        Position goDown = new Position(curr_state_maze.getRow() + 1, curr_state_maze.getColumn());
-        Position goUp = new Position(curr_state_maze.getRow() -1, curr_state_maze.getColumn());
-        Position goLeft = new Position(curr_state_maze.getRow(), curr_state_maze.getColumn() -1);
-        Position goRight = new Position(curr_state_maze.getRow(), curr_state_maze.getColumn() + 1);
+        //Map all the positions around the current state
 
 
         //Diagonals
         //UpRight
-<<<<<<< HEAD
-        if (this.searchingAlgorithm.equals("BestFS")) {
-            if (isValidPosition(goUpRight) && (isValidPosition(goUp) || isValidPosition(goRight)))
-            Possible_states.add(new MazeState(goUpRight.getRowIndex(), goUpRight.getColumnIndex(), 15));
-            if (isValidPosition(goUpLeft) && (isValidPosition(goUp) || isValidPosition(goLeft)))
-                Possible_states.add(new MazeState(goUpLeft.getRowIndex(), goUpLeft.getColumnIndex(), 15));
-            if (isValidPosition(goDownLeft) && (isValidPosition(goDown) || isValidPosition(goLeft)))
-                Possible_states.add(new MazeState(goDownLeft.getRowIndex(), goDownLeft.getColumnIndex(), 15));
-            if (isValidPosition(goDownRight) && (isValidPosition(goDown) || isValidPosition(goRight)))
-                Possible_states.add(new MazeState(goDownRight.getRowIndex(), goDownRight.getColumnIndex(), 15));
+        if (curr_state_maze.getRow() >= 1){
+            if (Diagonal_Verification("goUpRight",curr_state_maze,new MazeState(curr_state_maze.getRow() -1,curr_state_maze.getColumn()))){
+                Position goUpRight = new Position(curr_state_maze.getRow() - 1, curr_state_maze.getColumn() + 1);
+                Possible_states.add(new MazeState(goUpRight.getRowIndex(),goUpRight.getColumnIndex(),15));
+            }
+            if (Diagonal_Verification("goUpLeft",curr_state_maze,new MazeState(curr_state_maze.getRow() -1,curr_state_maze.getColumn()))){
+                Position goUpLeft = new Position(curr_state_maze.getRow() - 1 , curr_state_maze.getColumn() -1 );
+                Possible_states.add(new MazeState(goUpLeft.getRowIndex(),goUpLeft.getColumnIndex(),15));
+            }
 
         }
-        if (isValidPosition(goDown)){
-            if (Possible_states.contains(goDown)){
-                Possible_states.remove(goDown);
+        if (curr_state_maze.getRow() < maze.getRows() - 1 ) {
+            if (Diagonal_Verification("goDownRight",curr_state_maze,new MazeState(curr_state_maze.getRow() +1,curr_state_maze.getColumn()))){
+                Position goDownRight = new Position(curr_state_maze.getRow() + 1, curr_state_maze.getColumn() + 1);
+                Possible_states.add(new MazeState(goDownRight.getRowIndex(),goDownRight.getColumnIndex(),15));
             }
-            Possible_states.add(new MazeState(goDown.getRowIndex(),goDown.getColumnIndex(),10));
+            if (Diagonal_Verification("goDownLeft",curr_state_maze,new MazeState(curr_state_maze.getRow() +1,curr_state_maze.getColumn()))){
+                Position goDownLeft = new Position(curr_state_maze.getRow() + 1, curr_state_maze.getColumn() -1);
+                Possible_states.add(new MazeState(goDownLeft.getRowIndex(),goDownLeft.getColumnIndex(),15));
+            }
         }
-=======
-            if (curr_state_maze.getRow() >= 1){
-                if (Diagonal_Verification("goUpRight",curr_state_maze,new MazeState(curr_state_maze.getRow() -1,curr_state_maze.getColumn()))){
-                    Position goUpRight = new Position(curr_state_maze.getRow() - 1, curr_state_maze.getColumn() + 1);
-                    Possible_states.add(new MazeState(goUpRight.getRowIndex(),goUpRight.getColumnIndex(),15));
-                }
-                if (Diagonal_Verification("goUpLeft",curr_state_maze,new MazeState(curr_state_maze.getRow() -1,curr_state_maze.getColumn()))){
-                    Position goUpLeft = new Position(curr_state_maze.getRow() - 1 , curr_state_maze.getColumn() -1 );
-                    Possible_states.add(new MazeState(goUpLeft.getRowIndex(),goUpLeft.getColumnIndex(),15));
-                }
-
-            }
-            if (curr_state_maze.getRow() < maze.getRows() - 1 ) {
-                if (Diagonal_Verification("goDownRight",curr_state_maze,new MazeState(curr_state_maze.getRow() +1,curr_state_maze.getColumn()))){
-                    Position goDownRight = new Position(curr_state_maze.getRow() + 1, curr_state_maze.getColumn() + 1);
-                    Possible_states.add(new MazeState(goDownRight.getRowIndex(),goDownRight.getColumnIndex(),15));
-                }
-                if (Diagonal_Verification("goDownLeft",curr_state_maze,new MazeState(curr_state_maze.getRow() +1,curr_state_maze.getColumn()))){
-                    Position goDownLeft = new Position(curr_state_maze.getRow() + 1, curr_state_maze.getColumn() -1);
-                    Possible_states.add(new MazeState(goDownLeft.getRowIndex(),goDownLeft.getColumnIndex(),15));
-                }
-            }
 
 
         //Not diagonals
@@ -151,47 +99,23 @@ public class SearchableMaze implements ISearchable {
         return Possible_states;
 
     }
->>>>>>> e54f3e6076f8c6f4d497a3a7cdc27e4b7f3ef7d2
 
-        if (isValidPosition(goUp)){
-            if (Possible_states.contains(goUp)){
-                Possible_states.remove(goUp);}
-                Possible_states.add(new MazeState(goUp.getRowIndex(),goUp.getColumnIndex(),10));
-            }
+    public boolean Diagonal_Verification(String str,MazeState curr_state_maze,MazeState next_curr_state){return switch (str) {
+        case "goUpRight" -> (Non_Diagonal_Verification("goUp",curr_state_maze) || Non_Diagonal_Verification("goRight",curr_state_maze)) && Non_Diagonal_Verification("goRight",next_curr_state);
+        case "goUpLeft" -> (Non_Diagonal_Verification("goUp",curr_state_maze) || Non_Diagonal_Verification("goLeft",curr_state_maze)) && Non_Diagonal_Verification("goLeft",next_curr_state);
+        case "goDownRight" -> ( Non_Diagonal_Verification("goDown",curr_state_maze) || Non_Diagonal_Verification("goRight",curr_state_maze)) && Non_Diagonal_Verification("goRight",next_curr_state) ;
+        case "goDownLeft" -> (Non_Diagonal_Verification("goDown",curr_state_maze)  || Non_Diagonal_Verification("goLeft",curr_state_maze)) && Non_Diagonal_Verification("goLeft",next_curr_state);
+        default -> false;
+    };}
 
-        if (isValidPosition(goLeft)){
-            if (Possible_states.contains(goLeft)){
-                Possible_states.remove(goLeft);}
-                Possible_states.add(new MazeState(goLeft.getRowIndex(),goLeft.getColumnIndex(),10));
-            }
 
-        if (isValidPosition(goRight)){
-            if (Possible_states.contains(goRight)){
-                Possible_states.remove(goRight);}
-                Possible_states.add(new MazeState(goRight.getRowIndex(),goRight.getColumnIndex(),10));
-            }
-        return Possible_states;
+    public boolean Non_Diagonal_Verification(String str,MazeState curr_state_maze){
+        return switch (str) {
+            case "goUp" -> (curr_state_maze.getRow() >= 1 && this.maze.getMaze()[curr_state_maze.getRow() - 1][curr_state_maze.getColumn()] == 0);
+            case "goDown" -> (curr_state_maze.getRow() < maze.getRows() - 1 && this.maze.getMaze()[curr_state_maze.getRow() + 1][curr_state_maze.getColumn()] == 0);
+            case "goLeft" -> (curr_state_maze.getColumn() >= 1 && this.maze.getMaze()[curr_state_maze.getRow()][curr_state_maze.getColumn() - 1] == 0);
+            case "goRight" -> (curr_state_maze.getColumn() < maze.getColumn() - 1 && this.maze.getMaze()[curr_state_maze.getRow()][curr_state_maze.getColumn() + 1] == 0);
+            default -> false;
+        };
     }
-
-//    public boolean Diagonal_Verification(String str,MazeState curr_state_maze,MazeState next_curr_state){return switch (str) {
-//        case "goUpRight" -> (Non_Diagonal_Verification("goUp",curr_state_maze) || Non_Diagonal_Verification("goRight",curr_state_maze)) && Non_Diagonal_Verification("goRight",next_curr_state);
-//        case "goUpLeft" -> (Non_Diagonal_Verification("goUp",curr_state_maze) || Non_Diagonal_Verification("goLeft",curr_state_maze)) && Non_Diagonal_Verification("goLeft",next_curr_state);
-//        case "goDownRight" -> ( Non_Diagonal_Verification("goDown",curr_state_maze) || Non_Diagonal_Verification("goRight",curr_state_maze)) && Non_Diagonal_Verification("goRight",next_curr_state) ;
-//        case "goDownLeft" -> (Non_Diagonal_Verification("goDown",curr_state_maze)  || Non_Diagonal_Verification("goLeft",curr_state_maze)) && Non_Diagonal_Verification("goLeft",next_curr_state);
-//        default -> false;
-//    };}
-
-
-//    public boolean Non_Diagonal_Verification(String str,MazeState curr_state_maze){
-//        return switch (str) {
-//            case "goUp" -> (curr_state_maze.getRow() >= 1 && this.maze.getMaze()[curr_state_maze.getRow() - 1][curr_state_maze.getColumn()] == 0);
-//            case "goDown" -> (curr_state_maze.getRow() < maze.getRows() - 1 && this.maze.getMaze()[curr_state_maze.getRow() + 1][curr_state_maze.getColumn()] == 0);
-//            case "goLeft" -> (curr_state_maze.getColumn() >= 1 && this.maze.getMaze()[curr_state_maze.getRow()][curr_state_maze.getColumn() - 1] == 0);
-//            case "goRight" -> (curr_state_maze.getColumn() < maze.getColumn() - 1 && this.maze.getMaze()[curr_state_maze.getRow()][curr_state_maze.getColumn() + 1] == 0);
-//            default -> false;
-//        };
-//    }
-//
-
-
 }

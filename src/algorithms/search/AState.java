@@ -36,7 +36,7 @@ public abstract class AState {
     public int getCost() {
         return cost;
     }
-<<<<<<< HEAD
+
     public AState() {
         this.cost = 0;
     }
@@ -47,17 +47,7 @@ public abstract class AState {
 
     }
 
-=======
 
-    /**
-     * Default AState constructor - sets the state's cost as 0.
-     */
-    public AState() { this.cost = 0;}
-
-    /**
-     * sets the state's parent.
-     */
->>>>>>> a4eb82fb51a9682b49977a06283e8b3eeebbe87d
     public abstract void setParent(AState parent);
 
     /**
