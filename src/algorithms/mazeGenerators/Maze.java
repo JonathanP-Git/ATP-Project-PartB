@@ -128,6 +128,35 @@ public class Maze {
         return start_position;
 
     }
+
+    public byte[] toByteArray(){
+        String rowsInBinary = Integer.toBinaryString(rows);
+        String columnsInBinary = Integer.toBinaryString(column);
+        String startPositionRow = Integer.toBinaryString(start_position.getRowIndex());
+        String startPositionColumn = Integer.toBinaryString(start_position.getColumnIndex());
+        String endPositionRow = Integer.toBinaryString(end_position.getRowIndex());
+        String endPositionColumn = Integer.toBinaryString(end_position.getColumnIndex());
+
+
+        byte[] bytes = new byte[rows*column+6];
+
+
+
+        for (int i = 0; i < rowsInBinary.length(); i++) {
+            bytes[i]=(byte)(rowsInBinary.charAt(i));
+
+        }
+//        int[][] maze;
+//        int rows;
+//        int column;
+//        Position end_position;
+//        Position start_position;
+
+
+        return bytes;
+    }
+
+
 }
 
 
