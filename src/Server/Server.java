@@ -1,7 +1,5 @@
 package Server;
 
-import Server.Strategy.IServerStrategy;
-
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -32,7 +30,7 @@ public class Server {
                     System.out.println("Client accepted: " + clientSocket.toString());
 
                     try {
-                        strategy.applyStrategy(clientSocket.getInputStream(), clientSocket.getOutputStream());
+                        strategy.serverStrategy(clientSocket.getInputStream(), clientSocket.getOutputStream());
                         clientSocket.close();
                     } catch (IOException e){
                         e.printStackTrace();

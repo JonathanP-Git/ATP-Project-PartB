@@ -6,7 +6,7 @@ import java.io.OutputStream;
 public class ServerStrategySolveSearchProblem implements IServerStrategy{
 
     @Override
-    public void applyStrategy(InputStream inFromClient, OutputStream outToClient) {
+    public void serverStrategy(InputStream inFromClient, OutputStream outToClient) {
 
     }
 

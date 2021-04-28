@@ -156,10 +156,9 @@ public class Maze {
 
     }
 
-
     public byte[] toByteArray(){
         ArrayList<String> stringList = new ArrayList<>();
-       extracted(stringList);
+        extracted(stringList);
         byte[] bytes = new byte[rows*column + 60];
         int index=0;
 
@@ -174,7 +173,9 @@ public class Maze {
     }
 
     private void matrixToByte(int index, byte[] bytes) {
+
         for (int i = 0; i < rows ; i++) {
+
             for (int j = 0; j < column ; j++) {
                 bytes[index] = (byte) maze[i][j];
                 index++;
@@ -182,11 +183,14 @@ public class Maze {
         }
     }
 
+
     private void byteToMatrix(int index, byte[] bytes) {
+
 
         for (int k = 0; k < rows ; k++) {
             for (int j = 0; j < column ; j++) {
                 int tempByte =  bytes[index];
+
                 this.maze[k][j]=tempByte;
                 index++;
             }
@@ -204,8 +208,9 @@ public class Maze {
 
     /*
     get a intger value of field, convert it to binary base
-    and add zero until we get to lenght of 10 chars
+    and add zero until we get to length of 10 chars
      */
+
     private String to10bit(int val){
         String str=Integer.toBinaryString(val);
         String temp="";
@@ -214,7 +219,6 @@ public class Maze {
             temp+="0";
         }
         temp+=str;
-
         return temp;
     }
 
