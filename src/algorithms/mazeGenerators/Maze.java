@@ -174,8 +174,8 @@ public class Maze {
     }
 
     private void matrixToByte(int index, byte[] bytes) {
-        for (int i = 0; i < rows - 1; i++) {
-            for (int j = 0; j < column - 1; j++) {
+        for (int i = 0; i < rows ; i++) {
+            for (int j = 0; j < column ; j++) {
                 bytes[index] = (byte) maze[i][j];
                 index++;
             }
@@ -183,8 +183,8 @@ public class Maze {
     }
 
     private void byteToMatrix(int index, byte[] bytes) {
-        for (int k = 0; k < rows - 1; k++) {
-            for (int j = 0; j < column - 1; j++) {
+        for (int k = 0; k < rows ; k++) {
+            for (int j = 0; j < column ; j++) {
                 int tempByte =  bytes[index];
                 this.maze[k][j]=tempByte;
                 index++;
