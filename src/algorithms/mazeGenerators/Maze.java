@@ -183,6 +183,7 @@ public class Maze {
     }
 
     private void byteToMatrix(int index, byte[] bytes) {
+
         for (int k = 0; k < rows ; k++) {
             for (int j = 0; j < column ; j++) {
                 int tempByte =  bytes[index];
