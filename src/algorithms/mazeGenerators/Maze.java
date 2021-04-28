@@ -150,16 +150,9 @@ public class Maze {
         setStartPosition(fieldsValue[2],fieldsValue[3]);
         setEndPosition(fieldsValue[4],fieldsValue[5]);
 
-       //להמשיך מכאן, השדות נכנסים טוב אבל לא מצליחה להכניס אתת המערך
-        char x=' ';
-        for (int k=0; k<rows; k++){
-            for(int j=0; j<column; j++){
-                x+=bytes[index];
-                this.maze[k][j]=Character.getNumericValue(x);
-                index++;
-                x=' ';
-            }
-        }
+        this.maze = new int[rows][column];
+        byteToMatrix(index,bytes);
+
 
     }
 
@@ -186,8 +179,16 @@ public class Maze {
                 bytes[index] = (byte) maze[i][j];
                 index++;
             }
-           // bytes[index] = -1;
-            //index++;
+        }
+    }
+
+    private void byteToMatrix(int index, byte[] bytes) {
+        for (int k = 0; k < rows - 1; k++) {
+            for (int j = 0; j < column - 1; j++) {
+                int tempByte =  bytes[index];
+                this.maze[k][j]=tempByte;
+                index++;
+            }
         }
     }
 
